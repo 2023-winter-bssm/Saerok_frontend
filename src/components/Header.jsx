@@ -31,6 +31,8 @@ const Container = styled.div`
   padding: 16px 40px;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  background-color: #ffffff;
 `;
 
 const Menu = styled.div`
