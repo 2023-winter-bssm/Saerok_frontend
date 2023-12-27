@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./reset.css";
 import styled from "styled-components";
 
 function Login() {
