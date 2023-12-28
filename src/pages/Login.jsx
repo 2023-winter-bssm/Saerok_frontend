@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [name, setName] = useState("");
@@ -14,10 +15,9 @@ function Login() {
   };
 
   const onClickLogin = () => {
-    alert(name);
-    alert(password);
+    navigate("/feed");
   };
-
+  const navigate = useNavigate();
   return (
     <Layout>
       <Container>

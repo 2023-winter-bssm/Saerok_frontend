@@ -20,7 +20,7 @@ const Header = () => {
         </Link>
         <ProfileContainer>
           <img src={profile} alt="profile" />
-          1216 정수환
+          1302 김규민
         </ProfileContainer>
       </Menu>
     </Container>

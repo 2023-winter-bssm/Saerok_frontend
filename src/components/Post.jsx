@@ -4,11 +4,18 @@ import profile from "../assets/profile.png";
 import heartIcon from "../assets/heartIcon.svg";
 import shareIcon from "../assets/shareIcon.svg";
 import commentIcon from "../assets/commentIcon.svg";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({ image, setImage, setVisible }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
-      <Profile>
+      <Profile
+        onClick={() => {
+          navigate("/profile");
+        }}
+      >
         <img src={profile} alt="profile" />
         <div>
           <span>1216 정수환</span>
