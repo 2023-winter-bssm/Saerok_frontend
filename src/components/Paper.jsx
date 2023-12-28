@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import profile from "../assets/profile.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [desc, setDesc] = useState("");
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
 
   const handleDesc = (e) => {
     setDesc(e.target.value);
@@ -15,8 +17,8 @@ function Login() {
   };
 
   const onClickSubmit = () => {
+    navigate("/profile");
     openModalHandler();
-    alert(desc);
   };
 
   return (
@@ -48,14 +50,13 @@ function Login() {
 }
 
 const Layout = styled.div`
-  width: 26rem;
-  height: fit-content;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 1rem 2rem 1rem;
-  border: solid 1px;
 `;
 
 const Container = styled.div`

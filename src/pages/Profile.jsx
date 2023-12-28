@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import profile from "../assets/profile.png";
-
+import Picture from "../assets/picture.jpg";
+import Rolling from "../assets/rolling.png";
+import { useNavigate } from "react-router-dom";
 function Profile() {
   const [isPostVisible, setIsPostVisible] = useState(true);
-
+  const navigate = useNavigate();
   return (
     <Layout>
       <Container>
@@ -32,25 +34,32 @@ function Profile() {
           >
             롤링 페이퍼
           </Filter>
+          <BTN
+            onClick={() => {
+              navigate("/paper");
+            }}
+          >
+            롤링페이퍼 적기+
+          </BTN>
         </FilterBox>
         <Line></Line>
         <PostBox>
           {isPostVisible ? (
             <>
-              <Post></Post>
-              <Post></Post>
-              <Post></Post>
-              <Post></Post>
-              <Post></Post>
-              <Post></Post>
-              <Post></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
+              <Post src={Picture}></Post>
             </>
           ) : (
             <>
-              <Paper></Paper>
-              <Paper></Paper>
-              <Paper></Paper>
-              <Paper></Paper>
+              <Paper src={Rolling}></Paper>
+              <Paper src={Rolling}></Paper>
+              <Paper src={Rolling}></Paper>
+              <Paper src={Rolling}></Paper>
             </>
           )}
         </PostBox>
@@ -119,14 +128,23 @@ const Line = styled.div`
 
 const PostBox = styled.div`
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
 `;
-const Post = styled.div`
+const Post = styled.img`
   flex: 1 1 1;
   width: 15rem;
   height: 15rem;
   margin: 0.2rem;
   background-color: black;
+  object-fit: cover;
+`;
+
+const BTN = styled.div`
+  background-color: #ff8c4b;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
 `;
 
 const Paper = styled(Post)`
