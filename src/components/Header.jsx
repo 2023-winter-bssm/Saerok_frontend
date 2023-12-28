@@ -12,10 +12,12 @@ const Header = () => {
         <img style={{ height: "36px" }} src={logo} alt="logo" />
       </Link>
       <Menu>
-        <UploadButton>
-          <img src={addIcon} alt="upload" />
-          추억 업로드
-        </UploadButton>
+        <Link to="/upload">
+          <UploadButton>
+            <img src={addIcon} alt="upload" />
+            추억 업로드
+          </UploadButton>
+        </Link>
         <ProfileContainer>
           <img src={profile} alt="profile" />
           1216 정수환
