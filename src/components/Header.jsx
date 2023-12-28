@@ -8,7 +8,7 @@ import profile from "../assets/profile.png";
 const Header = () => {
   return (
     <Container>
-      <Link to="/">
+      <Link to="/feed">
         <img src={logo} alt="logo" />
       </Link>
       <Menu>
@@ -33,6 +33,7 @@ const Container = styled.div`
   align-items: center;
   position: fixed;
   background-color: #ffffff;
+  z-index: 5;
 `;
 
 const Menu = styled.div`

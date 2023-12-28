@@ -6,7 +6,7 @@ import heartIcon from "../assets/heartIcon.svg";
 import shareIcon from "../assets/shareIcon.svg";
 import commentIcon from "../assets/commentIcon.svg";
 
-const Post = () => {
+const Post = ({ visible, setVisible }) => {
   return (
     <Container>
       <Profile>
@@ -16,17 +16,30 @@ const Post = () => {
           <Date>12월 27일</Date>
         </div>
       </Profile>
-      <img src={nullImage} alt="null" />
+      <img
+        onClick={() => setVisible(1)}
+        style={{ cursor: "pointer" }}
+        src={nullImage}
+        alt="null"
+      />
       <Bottom>
         <Tags>
-          <img src={heartIcon} alt="like" />
-          <img src={commentIcon} alt="comment" />
-          <img src={shareIcon} alt="share" />
+          <Clickable>
+            <img src={heartIcon} alt="like" />
+          </Clickable>
+          <Clickable>
+            <img src={commentIcon} alt="comment" />
+          </Clickable>
+          <Clickable>
+            <img src={shareIcon} alt="share" />
+          </Clickable>
         </Tags>
-        <span>
-          배고파요배고파요 <Hashtag>#1학년</Hashtag> <Hashtag>#2반</Hashtag>{" "}
-          <Hashtag>#화이팅</Hashtag>
-        </span>
+        <Comment>
+          <span>
+            배고파요배고파요 <Hashtag>#1학년</Hashtag> <Hashtag>#2반</Hashtag>{" "}
+            <Hashtag>#화이팅</Hashtag>
+          </span>
+        </Comment>
       </Bottom>
     </Container>
   );
@@ -37,11 +50,13 @@ const Container = styled.div`
   flex-direction: column;
   gap: 16px;
   width: 516px;
+  padding-bottom: 30px;
 `;
 
 const Profile = styled.div`
   display: flex;
   gap: 16px;
+  font-weight: 900;
   align-items: center;
 `;
 
@@ -66,6 +81,14 @@ const Hashtag = styled.mark`
 const Tags = styled.div`
   display: flex;
   gap: 20px;
+`;
+
+const Clickable = styled.div`
+  cursor: pointer;
+`;
+
+const Comment = styled.div`
+  cursor: pointer;
 `;
 
 export default Post;

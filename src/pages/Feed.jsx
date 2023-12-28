@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import decreaseIcon from "../assets/decreaseIcon.svg";
 import increaseIcon from "../assets/increaseIcon.svg";
+import Post from "../components/Post";
+import FeedDetail from "../components/FeedDetail";
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
@@ -15,6 +17,7 @@ const vw = Math.max(
 
 const Feed = () => {
   const [scroll, setScroll] = useState(0);
+  const [visible, setVisible] = React.useState(false);
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
   const [day, setDay] = useState(currentDay);
@@ -91,11 +94,21 @@ const Feed = () => {
 
   return (
     <Container>
+      <PostBackground
+        $visible={visible}
+        onClick={() => setVisible((prev) => !prev)}
+      />
+      <FeedDetail visible={visible} />
       <Header />
       <ScrollBarBackground>
         <ScrollBar $scrollHeight={scroll} $vw={vw} />
       </ScrollBarBackground>
-      <Background>
+      <Posts>
+        <Post visible={visible} setVisible={setVisible} />
+        <Post visible={visible} setVisible={setVisible} />
+        <Post visible={visible} setVisible={setVisible} />
+      </Posts>
+      <Left>
         <Dates>
           <IncreaseButton onClick={increaseYear}>
             <img src={increaseIcon} alt="increase" />
@@ -105,6 +118,8 @@ const Feed = () => {
             <img src={decreaseIcon} alt="decrease" />
           </DecreaseButton>
         </Dates>
+      </Left>
+      <Right>
         <Dates>
           <IncreaseButton onClick={increaseDay}>
             <img src={increaseIcon} alt="increase" />
@@ -117,7 +132,7 @@ const Feed = () => {
             <img src={decreaseIcon} alt="decrease" />
           </DecreaseButton>
         </Dates>
-      </Background>
+      </Right>
     </Container>
   );
 };
@@ -133,6 +148,7 @@ const ScrollBarBackground = styled.div`
   height: 8px;
   position: fixed;
   top: 72px;
+  z-index: 5;
 `;
 
 const ScrollBar = styled.div`
@@ -141,19 +157,6 @@ const ScrollBar = styled.div`
   background: #ff8c4b;
   width: ${({ $scrollHeight, $vw }) => $scrollHeight * $vw}px;
   border-radius: 4px;
-`;
-
-const Background = styled.div`
-  position: fixed;
-  top: calc(30vh);
-  font-size: 200px;
-  color: #f1f1f1;
-  font-weight: 900;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  padding-inline: 5%;
-  user-select: none;
 `;
 
 const DecreaseButton = styled.div`
@@ -171,6 +174,51 @@ const Dates = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Posts = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-top: 100px;
+  z-index: 3;
+  width: fit-content;
+  margin: auto;
+`;
+
+const Left = styled.div`
+  position: fixed;
+  top: calc(30vh);
+  font-size: 200px;
+  color: #f1f1f1;
+  font-weight: 900;
+  left: 0;
+  padding-inline: 5%;
+  user-select: none;
+`;
+
+const Right = styled.div`
+  position: fixed;
+  top: calc(30vh);
+  font-size: 200px;
+  color: #f1f1f1;
+  font-weight: 900;
+  padding-inline: 5%;
+  user-select: none;
+  right: 0;
+`;
+
+const PostBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+
+  display: ${({ $visible }) => (String($visible) === "false" ? "none" : "")};
 `;
 
 export default Feed;
