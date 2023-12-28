@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import nullImage from "../assets/ImageNull.png";
 import heartIcon from "../assets/heartIcon.svg";
@@ -6,10 +6,10 @@ import shareIcon from "../assets/shareIcon.svg";
 import commentIcon from "../assets/commentIcon.svg";
 import meatballIcon from "../assets/meatballIcon.svg";
 import profile from "../assets/profile.png";
+import { useNavigate } from "react-router-dom";
 
 const FeedDetail = ({ visible }) => {
   if (!visible) return;
-
   return (
     <Container>
       <ContentImage src={nullImage} alt="null" />

@@ -11,7 +11,7 @@ function Profile() {
         <ProfileBox>
           <Img src={profile} />
           <TextBox>
-            <Name>1302 김규민</Name>
+            <Name>1216 정수환</Name>
             <Status>호호호로로로로로</Status>
           </TextBox>
         </ProfileBox>
