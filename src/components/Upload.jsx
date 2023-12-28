@@ -85,10 +85,10 @@ function Login() {
 const Layout = styled.div`
   width: 26rem;
   height: 95%;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 `;
 
 const Container = styled.div`

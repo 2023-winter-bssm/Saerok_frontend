@@ -5,6 +5,9 @@ import decreaseIcon from "../assets/decreaseIcon.svg";
 import increaseIcon from "../assets/increaseIcon.svg";
 import Post from "../components/Post";
 import FeedDetail from "../components/FeedDetail";
+import testImage1 from "../assets/testimage1.jpg";
+import testImage2 from "../assets/testimage2.jpg";
+import testImage3 from "../assets/testimage3.png";
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
@@ -17,7 +20,8 @@ const vw = Math.max(
 
 const Feed = () => {
   const [scroll, setScroll] = useState(0);
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
+  const [image, setImage] = useState(testImage1);
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
   const [day, setDay] = useState(currentDay);
@@ -98,15 +102,15 @@ const Feed = () => {
         $visible={visible}
         onClick={() => setVisible((prev) => !prev)}
       />
-      <FeedDetail visible={visible} />
+      <FeedDetail image={image} visible={visible} />
       <Header />
       <ScrollBarBackground>
         <ScrollBar $scrollHeight={scroll} $vw={vw} />
       </ScrollBarBackground>
       <Posts>
-        <Post visible={visible} setVisible={setVisible} />
-        <Post visible={visible} setVisible={setVisible} />
-        <Post visible={visible} setVisible={setVisible} />
+        <Post image={testImage1} setImage={setImage} setVisible={setVisible} />
+        <Post image={testImage2} setImage={setImage} setVisible={setVisible} />
+        <Post image={testImage3} setImage={setImage} setVisible={setVisible} />
       </Posts>
       <Left>
         <Dates>

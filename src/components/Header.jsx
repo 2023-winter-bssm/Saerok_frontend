@@ -9,13 +9,15 @@ const Header = () => {
   return (
     <Container>
       <Link to="/feed">
-        <img src={logo} alt="logo" />
+        <img style={{ height: "36px" }} src={logo} alt="logo" />
       </Link>
       <Menu>
-        <UploadButton>
-          <img src={addIcon} alt="upload" />
-          추억 업로드
-        </UploadButton>
+        <Link to="/upload">
+          <UploadButton>
+            <img src={addIcon} alt="upload" />
+            추억 업로드
+          </UploadButton>
+        </Link>
         <ProfileContainer>
           <img src={profile} alt="profile" />
           1302 김규민
