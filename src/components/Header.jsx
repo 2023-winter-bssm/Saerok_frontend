@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import addIcon from "../assets/addIcon.svg";
 import profile from "../assets/profile.png";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Link to="/feed">
@@ -18,7 +19,11 @@ const Header = () => {
             추억 업로드
           </UploadButton>
         </Link>
-        <ProfileContainer>
+        <ProfileContainer
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
           <img src={profile} alt="profile" />
           1302 김규민
         </ProfileContainer>
