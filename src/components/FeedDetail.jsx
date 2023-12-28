@@ -1,18 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import nullImage from "../assets/ImageNull.png";
 import heartIcon from "../assets/heartIcon.svg";
 import shareIcon from "../assets/shareIcon.svg";
 import commentIcon from "../assets/commentIcon.svg";
 import meatballIcon from "../assets/meatballIcon.svg";
 import profile from "../assets/profile.png";
 
-const FeedDetail = ({ visible }) => {
+const FeedDetail = ({ image, visible }) => {
+  const [input, setInput] = React.useState("");
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
   if (!visible) return;
 
   return (
     <Container>
-      <ContentImage src={nullImage} alt="null" />
+      <ContentImage src={image} alt="null" />
       <Right>
         <div>
           <Top>
@@ -61,7 +66,11 @@ const FeedDetail = ({ visible }) => {
             <img src={commentIcon} alt="comment" />
             <img src={shareIcon} alt="share" />
           </Tags>
-          <CommentInput placeholder="댓글을 적어주세요..." />
+          <CommentInput
+            placeholder="댓글을 적어주세요..."
+            onChange={handleInput}
+            value={input}
+          />
         </Bottom>
       </Right>
     </Container>
@@ -77,6 +86,7 @@ const Container = styled.div`
   height: fit-content;
   z-index: 50;
   transform: translate(-50%, -50%);
+  height: 600px;
 `;
 
 const Right = styled.div`
@@ -154,6 +164,10 @@ const CommentContent = styled.span`
 
 const ContentImage = styled.img`
   max-width: 600px;
+`;
+
+const Input = styled.div`
+  display: flex;
 `;
 
 export default FeedDetail;

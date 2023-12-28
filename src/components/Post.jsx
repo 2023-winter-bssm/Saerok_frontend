@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import profile from "../assets/profile.png";
-import nullImage from "../assets/ImageNull.png";
 import heartIcon from "../assets/heartIcon.svg";
 import shareIcon from "../assets/shareIcon.svg";
 import commentIcon from "../assets/commentIcon.svg";
 
-const Post = ({ visible, setVisible }) => {
+const Post = ({ image, setImage, setVisible }) => {
   return (
     <Container>
       <Profile>
@@ -17,9 +16,12 @@ const Post = ({ visible, setVisible }) => {
         </div>
       </Profile>
       <img
-        onClick={() => setVisible(1)}
+        onClick={() => {
+          setVisible(1);
+          setImage(image);
+        }}
         style={{ cursor: "pointer" }}
-        src={nullImage}
+        src={image}
         alt="null"
       />
       <Bottom>
